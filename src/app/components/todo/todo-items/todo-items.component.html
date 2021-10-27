@@ -1,0 +1,35 @@
+<ng-container *ngIf="currentLocation === '/home'">
+  <table id="todos">
+    <tr class="todo" *ngFor="let item of fiveTodos">
+      <td>
+        {{ item.title }}
+      </td>
+      <td>
+        {{ item.desc }}
+      </td>
+      <td>
+        {{ item.date }}
+      </td>
+    </tr>
+  </table>
+  
+</ng-container>
+<ng-container *ngIf="currentLocation !== '/home'">
+  <table id="todos">
+    <tr class="todo" *ngFor="let item of todos | paginate: { itemsPerPage: 10, currentPage: page }">
+      <td>
+        {{ item.title }}
+      </td>
+      <td>
+        {{ item.desc }}
+      </td>
+      <td>
+        {{ item.date }}
+      </td>
+    </tr>
+  </table>
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+
+  
+  
+</ng-container>
